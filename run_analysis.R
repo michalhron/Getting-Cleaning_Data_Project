@@ -58,4 +58,4 @@ Data[Data$activity==as.character(i),]$activity <- as.character(activity_labels[i
 
 Tidy_Aggregated <- aggregate(Data[,1:66],list(Data$subject,Data$activity),mean)
 colnames(Tidy_Aggregated)[1:2] <- c("subject","Activty")
-write.table(Tidy_Aggregated,"summarized_file.txt")
+write.table(Tidy_Aggregated,"summarized_file.txt", row.name=FALSE)
