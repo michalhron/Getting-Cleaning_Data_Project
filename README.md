@@ -1,5 +1,6 @@
 # Getting-Cleaning_Data_Project
 
+##Procedure Desciption
 The run_analysis file:
 *  downloads and unzips raw data if not already in working directory
 *  Creates vector with names
@@ -11,3 +12,7 @@ The run_analysis file:
 * Creates summary table with means by activity and subjects
 * Write this into a file
 
+##Data source:
+Here are the data for the project:
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
