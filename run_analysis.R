@@ -1,13 +1,19 @@
 #Week 4
+
+#Loading of packages
 library(dplyr)
 library(data.table)
 
 
+
+#loading files if not already there
+if (!directory.exist("UCI HAR Dataset")){
+
 setwd("/Users/michalhron/Desktop/Week 4/")
 URL ="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-
 download.file(URL,"archived.zip", method="curl")
 file <- unzip("archived.zip")
+}
 
 #Getting vector with names of features
 features <- read.table("~/Desktop/Week 4/UCI HAR Dataset/features.txt", quote="\"", comment.char="")
