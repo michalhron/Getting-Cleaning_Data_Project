@@ -4,7 +4,7 @@
 library(dplyr)
 library(data.table)
 
-
+path <- getwd()
 
 #loading files if not already there
 if (!directory.exist("UCI HAR Dataset")){
@@ -16,7 +16,7 @@ file <- unzip("archived.zip")
 }
 
 #Getting vector with names of features
-features <- read.table("~/Desktop/Week 4/UCI HAR Dataset/features.txt", quote="\"", comment.char="")
+features <- read.table("./UCI HAR Dataset/features.txt", quote="\"", comment.char="")
 features <- features$V2
 features_split <- strsplit(as.character(features),"-")
 
@@ -28,13 +28,13 @@ features_types_bool <- sapply(features_types, function(x) x%in% c("mean()","std(
 features_names <- features[features_types_bool]
 features_names<- as.character(features[features_types_bool])
 
-X_train <- read.table("~/Desktop/Week 4/UCI HAR Dataset/train/X_train.txt", quote="\"", comment.char="")[,features_types_bool]
-Y_train <- read.table("~/Desktop/Week 4/UCI HAR Dataset/train/y_train.txt", quote="\"", comment.char="")
+X_train <- read.table("./UCI HAR Dataset/train/X_train.txt", quote="\"", comment.char="")[,features_types_bool]
+Y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", quote="\"", comment.char="")
 Subject_train <- read.table("~/Desktop/Week 4/UCI HAR Dataset/train/subject_train.txt", quote="\"", comment.char="")
 
-X_test <- read.table("~/Desktop/Week 4/UCI HAR Dataset/test/X_test.txt", quote="\"", comment.char="")[,features_types_bool]
-Y_test <- read.table("~/Desktop/Week 4/UCI HAR Dataset/test/Y_test.txt", quote="\"", comment.char="")
-Subject_test <- read.table("~/Desktop/Week 4/UCI HAR Dataset/test/subject_test.txt", quote="\"", comment.char="")
+X_test <- read.table("./UCI HAR Dataset/test/X_test.txt", quote="\"", comment.char="")[,features_types_bool]
+Y_test <- read.table("./UCI HAR Dataset/test/Y_test.txt", quote="\"", comment.char="")
+Subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt", quote="\"", comment.char="")
 
 Data <- bind_rows(X_train,X_test)
 names(Data) <- features_names
@@ -49,7 +49,7 @@ names(Data)[67] <- "activity"
 Data <- bind_cols(Data,Subjects)
 names(Data)[68] <- "subject"
 
-activity_labels <- read.table("~/Desktop/Week 4/UCI HAR Dataset/activity_labels.txt", quote="\"", comment.char="")
+activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt", quote="\"", comment.char="")
 activity_labels <- as.character(activity_labels$V2)
 
 for (i in 1:length(activity_labels)){
